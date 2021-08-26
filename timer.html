@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <style>
+        body{
+            background-color: crimson;
+        }
+        h1{
+            text-align: center;
+            font-size: 60px;
+        }
+        .op{
+            display: grid;
+            background-color: darkgoldenrod;
+            grid-template-columns: auto auto auto;
+            padding: 20px;
+            font-size: 30px;
+            grid-gap: 20px;
+            justify-content: center;
+        }
+        .op > div{
+            background-color: darkorchid;
+            border: 2px solid blue;
+            border-radius:4px;
+            padding: 10px;
+            text-align: center;
+            width: 130px;
+            height: 40px;
+            
+        }
+        #btn{
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+            column-gap: 40px;
+            
+        }
+        .buttn{
+            padding: 20px 20px;
+        }
+        button{
+            background-color: maroon;
+            padding: 7px 25px ;
+            width: 80px;
+        }
+        
+        
+    </style>
+    <script>
+        var sec=0;
+        var id=0;
+        var min=0;
+        var hr=0;
+        function msg(){
+            
+            sec++;
+            if(sec==60){
+                min=min+1;
+                sec=0;
+            }
+            document.getElementById("op2").innerHTML=sec+" s";
+            document.getElementById("op1").innerHTML=min+" m";
+            
+            if(min==60){
+                hr++;
+                min=0;
+            }
+            document.getElementById("op3").innerHTML=hr+" hr";
+            
+        }
+        function start(){
+            id=window.setInterval(msg,1000);
+            
+        }
+        function stop(){
+            window.clearTimeout(id);
+        }
+        function reset(){
+            hr=0,min=0,sec=0;
+            document.getElementById("op2").innerHTML="00 s";
+            document.getElementById("op1").innerHTML="00 m";
+            document.getElementById("op3").innerHTML="00 h";
+            window.clearTimeout(id);
+            
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <h1><p>StopWatch</p></h1>
+        
+        <div class="op">
+            <div id="op3">0 hr</div>
+            <div id="op1">0 min</div>
+            <div id="op2">0 sec</div>
+        </div>
+        <div id="btn">
+            <div class="buttn"><button onclick="start()" >start</button></div>
+            <div class="buttn"><button onclick="stop()">stop</button></div>
+            <div class="buttn"><button onclick="reset()">reset</button></div>
+        </div>
+        
+    </div>
+</body>
+
+</html>
